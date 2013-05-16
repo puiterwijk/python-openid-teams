@@ -28,7 +28,7 @@ setup(
     name = "python-openid-teams",
     version = "1.0",
     zip_safe = True,
-    packages = ['openid-teams'],
+    packages = ['openid_teams'],
     install_requires = ['python-openid>=2.2.5'],    # Makes not much sense without...
     author = 'Patrick Uiterwijk',
     author_email = 'puiterwijk@gmail.com',
