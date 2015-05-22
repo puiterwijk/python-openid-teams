@@ -23,13 +23,22 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+import sys
 from setuptools import setup, find_packages
+
+install_requires = ['six']
+
+if sys.version_info[0] == 2:
+    install_requires.append('python-openid>=2.2.5')
+elif sys.version_info[0] == 3:
+    install_requires.append('python3-openid')
+
 setup(
     name = "python-openid-teams",
     version = "1.0",
+    install_requires = install_requires,
     zip_safe = True,
     packages = ['openid_teams'],
-    install_requires = ['python-openid>=2.2.5'],    # Makes not much sense without...
     author = 'Patrick Uiterwijk',
     author_email = 'puiterwijk@gmail.com',
     description = 'This is an implementation of the OpenID teams extension for python-openid',
