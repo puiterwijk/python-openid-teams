@@ -24,7 +24,7 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """Teams extension request and response parsing and object representation
 
-This module contains objects representing team extension requests 
+This module contains objects representing team extension requests
 and responses that can be used with both OpenID relying parties and
 OpenID providers.
 
@@ -59,11 +59,7 @@ from openid.message import registerNamespaceAlias, \
      NamespaceAliasRegistrationError
 from openid.extension import Extension
 
-try:
-    basestring #pylint:disable-msg=W0104
-except NameError:
-    # For Python 2.2
-    basestring = (str, unicode) #pylint:disable-msg=W0622
+import six
 
 __all__ = [
     'TeamsRequest',
@@ -77,7 +73,7 @@ teams_uri = 'http://ns.launchpad.net/2007/openid-teams'
 
 try:
     registerNamespaceAlias(teams_uri, 'lp')
-except NamespaceAliasRegistrationError, e:
+except NamespaceAliasRegistrationError as e:
     logging.exception('registerNamespaceAlias(%r, %r) failed: %s' % (teams_uri,
                                                                'teams', str(e),))
 
@@ -193,7 +189,7 @@ class TeamsRequest(Extension):
         @param team_names: The team names to request
         @type team_names: [str]
         """
-        if isinstance(team_names, basestring):
+        if isinstance(team_names, six.string_types):
             raise TypeError('Teams should be passed as a list of '
                             'strings (not %r)' % (type(field_names),))
 
