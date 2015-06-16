@@ -35,7 +35,7 @@ elif sys.version_info[0] == 3:
 
 setup(
     name = "python-openid-teams",
-    version = "1.0",
+    version = "1.1",
     install_requires = install_requires,
     zip_safe = True,
     packages = ['openid_teams'],
