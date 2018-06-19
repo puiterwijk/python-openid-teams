@@ -292,7 +292,12 @@ class TeamsResponse(Extension):
         if not args:
             return None
 
-        self.teams = args['is_member'].split(',')
+        self.teams = []
+
+        items = args['is_member']
+        if items:
+            for team_name in items.split(','):
+                self.teams.append(team_name)
 
         return self
 
